@@ -58,7 +58,9 @@ class CustomWatermarkExtractor extends AssignerWithPeriodicWatermarks[JSONObject
    */
   override def getCurrentWatermark: Watermark = {
     new Watermark(
-      if (currentTimestamp == Long.MinValue) Long.MinValue
+      if (currentTimestamp == Long.MinValue){
+        Long.MinValue
+      }
       else currentTimestamp - 1
     )
   }

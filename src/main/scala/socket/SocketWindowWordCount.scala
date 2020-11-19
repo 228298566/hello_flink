@@ -28,7 +28,7 @@ object SocketWindowWordCount {
     // print the results with a single thread, rather than in parallel
     windowCounts.print().setParallelism(1)
 
-    env.execute("Socket Window socket.WordCount")
+    env.execute("Socket Window model.WordCount")
   }
 
   // Data type for words with count
