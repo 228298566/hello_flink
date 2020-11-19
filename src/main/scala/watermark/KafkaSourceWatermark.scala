@@ -48,7 +48,7 @@ object KafkaSourceWatermark {
       .print()
     env.execute("KafkaSourceWatermarkTest")
   }
-}
+
 
 class CustomWatermarkExtractor extends AssignerWithPeriodicWatermarks[JSONObject] {
   var currentTimestamp = Long.MinValue
@@ -75,4 +75,5 @@ class CustomWatermarkExtractor extends AssignerWithPeriodicWatermarks[JSONObject
     this.currentTimestamp = element.getLong("time")
     currentTimestamp
   }
+}
 }

@@ -1,5 +1,6 @@
 package watermark
 
+import model.SensorReading
 import org.apache.flink.streaming.api.TimeCharacteristic
 import org.apache.flink.streaming.api.functions.{AssignerWithPeriodicWatermarks, AssignerWithPunctuatedWatermarks}
 import org.apache.flink.streaming.api.scala._
@@ -51,7 +52,7 @@ object WindowTest {
 
   }
 
-}
+
 
 //设置水位线（水印） 这里有两种方式实现
 //一种是周期性生成 一种是以数据的某种特性进行生成水位线（水印）
@@ -89,4 +90,5 @@ class MyAssignerPunctuated() extends AssignerWithPunctuatedWatermarks[SensorRead
   }
 }
 
-case class SensorReading(id: String, temperature: Int, timestamp: Long)
+
+}

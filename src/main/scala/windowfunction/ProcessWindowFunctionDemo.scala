@@ -32,14 +32,14 @@ object ProcessWindowFunctionDemo {
     val frequency = input
       .keyBy(s => s.symbol)
       .timeWindow(Time.seconds(10))
-      .process(new FrequencyProcessFunction)
+      .process(new ProcessWindowFunction1)
       .print()
 
     aenv.execute()
   }
-}
 
-class FrequencyProcessFunction extends ProcessWindowFunction[StockPrice, (String, Double), String, TimeWindow] {
+
+class ProcessWindowFunction1 extends ProcessWindowFunction[StockPrice, (String, Double), String, TimeWindow] {
 
   override def process(key: String, context: Context, elements: Iterable[StockPrice], out: Collector[(String, Double)]): Unit = {
 
@@ -62,3 +62,4 @@ class FrequencyProcessFunction extends ProcessWindowFunction[StockPrice, (String
   }
 }
 
+}

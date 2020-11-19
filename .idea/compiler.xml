@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="flinktest" target="6" />
+      <module name="flinktest" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>

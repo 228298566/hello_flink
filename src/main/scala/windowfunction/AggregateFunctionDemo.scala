@@ -35,7 +35,7 @@ object AggregateFunctionDemo {
 
     aenv.execute()
   }
-}
+
 
 /*
   IN: StockPrice
@@ -55,4 +55,5 @@ class AverageAggregate extends AggregateFunction[StockPrice, (String, Double, In
 
   override def merge(a: (String, Double, Int), b: (String, Double, Int)) =
     (a._1, a._2 + b._2, a._3 + b._3)
+}
 }

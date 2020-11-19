@@ -37,7 +37,7 @@ object MyTrigger {
       .aggregate(new AverageAggregate)
 
   }
-}
+
 
 class MyTrigger extends Trigger[StockPrice, TimeWindow] {
 
@@ -102,3 +102,4 @@ class AverageAggregate extends AggregateFunction[StockPrice, (String, Double, In
     (a._1 ,a._2 + b._2, a._3 + b._3)
 }
 
+}

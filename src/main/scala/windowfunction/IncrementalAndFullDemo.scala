@@ -41,7 +41,7 @@ object IncrementalAndFullDemo {
 
     aenv.execute()
   }
-}
+
 
 class WindowEndProcessFunction1 extends ProcessWindowFunction[(String, Double, Double), MaxMinPrice, String, TimeWindow] {
   override def process(key: String,
@@ -59,4 +59,5 @@ class MyReduceFunction1 extends ReduceFunction[ (String, Double, Double)] {
   override def reduce(s1: (String, Double, Double), s2: (String, Double, Double)):  (String, Double, Double) = {
     (s1._1, Math.max(s1._2, s2._2), Math.min(s1._3, s2._3))
   }
+}
 }

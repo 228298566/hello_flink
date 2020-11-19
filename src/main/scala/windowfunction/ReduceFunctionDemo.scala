@@ -45,7 +45,7 @@ object ReduceFunctionDemo {
 
     renv.execute()
   }
-}
+
 
 
 class MyReduceFunction extends ReduceFunction[StockPrice] {
@@ -53,4 +53,5 @@ class MyReduceFunction extends ReduceFunction[StockPrice] {
   override def reduce(s1: StockPrice, s2: StockPrice): StockPrice = {
     StockPrice(s1.symbol, s1.price + s2.price, 1511658000)
   }
+}
 }
