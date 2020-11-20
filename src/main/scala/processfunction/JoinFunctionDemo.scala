@@ -1,7 +1,5 @@
 package processfunction
 
-import java.lang
-
 import org.apache.flink.api.common.functions.JoinFunction
 import org.apache.flink.streaming.api.TimeCharacteristic
 import org.apache.flink.streaming.api.windowing.assigners.TumblingEventTimeWindows
@@ -24,14 +22,12 @@ object JoinFunctionDemo {
         (1, 1999L),
         (1, 2001L))
       .assignAscendingTimestamps(_._2)
-
     val greenStream = env
       .fromElements(
         (1, 1001L),
         (1, 1002L),
         (1, 3999L))
       .assignAscendingTimestamps(_._2)
-
     orangeStream.join(greenStream)
       .where(r => r._1)
       .equalTo(r => r._1)
@@ -48,5 +44,4 @@ object JoinFunctionDemo {
       input1 + " *** " + input2
     }
   }
-
 }

@@ -14,9 +14,7 @@ import org.apache.flink.util.Collector
  * @Author Natasha
  * @Description
  * @Date 2020/11/19 15:01
- **/
-
-/**
+ * @data
  * Transaction:
  * 2016-07-28 13:00:01.820,000001,10.2
  * 2016-07-28 13:00:01.260,000001,10.2
@@ -27,16 +25,12 @@ import org.apache.flink.util.Collector
  * 2016-07-28 13:00:05.990,000001,10.0
  * 2016-07-28 13:00:14.000,000001,10.1
  * 2016-07-28 13:00:20.000,000001,10.2
- */
-
-/**
  * Snapshot:
  * 2016-07-28 13:00:01.000,000001,10.2
  * 2016-07-28 13:00:04.000,000001,10.1
  * 2016-07-28 13:00:07.000,000001,10.0
  * 2016-07-28 13:00:16.000,000001,10.1
- */
-
+ **/
 object CoGroupFunctionDemo_2 {
   val format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS")
 

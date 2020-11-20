@@ -28,7 +28,6 @@ object ProcessWindowFunctionDemo {
         StockPrice(arr(0), arr(1).toDouble, arr(2).toLong)
       })
       .assignAscendingTimestamps(_.timestamp * 1000L)
-
     val frequency = input
       .keyBy(s => s.symbol)
       .timeWindow(Time.seconds(10))
@@ -38,28 +37,24 @@ object ProcessWindowFunctionDemo {
     aenv.execute()
   }
 
-
 class ProcessWindowFunction1 extends ProcessWindowFunction[StockPrice, (String, Double), String, TimeWindow] {
-
-  override def process(key: String, context: Context, elements: Iterable[StockPrice], out: Collector[(String, Double)]): Unit = {
+  override def process(key: String,
+                       context: Context,
+                       elements: Iterable[StockPrice],
+                       out: Collector[(String, Double)]): Unit = {
 
     // 股票价格和该价格出现的次数
     var countMap = scala.collection.mutable.Map[Double, Int]()
-
     for(element <- elements) {
       val count = countMap.getOrElse(element.price, 0)
       countMap(element.price) = count + 1
     }
-
     // 按照出现次数从高到低排序
     val sortedMap = countMap.toSeq.sortWith(_._2 > _._2)
-
     // 选出出现次数最高的输出到Collector
     if (sortedMap.size > 0) {
       out.collect((key, sortedMap(0)._1))
     }
-
   }
-}
-
+ }
 }
